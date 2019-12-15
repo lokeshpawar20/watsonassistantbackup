@@ -1,0 +1,482 @@
+{
+  "name": "Digital Bot Testing",
+  "intents": [
+    {
+      "intent": "menu",
+      "examples": [
+        {
+          "text": "Show me the Menus"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "Menus",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "nfsLanguage",
+          "synonyms": [
+            "Languages Available"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "nfsFAQ",
+          "synonyms": [
+            "FAQ"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "nfsContactUs",
+          "synonyms": [
+            "Contact Us"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "nfsFavourites",
+          "synonyms": [
+            "My Favorites"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "nfsComFeed",
+          "synonyms": [
+            "Complaints & Feedback"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "nfsResetMPin",
+          "synonyms": [
+            "Change mPIN"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "nfsResetAppPass",
+          "synonyms": [
+            "Reset application Password"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "nfsTranHistory",
+          "synonyms": [
+            "Transaction history"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "passPolicy",
+          "synonyms": [
+            "Application Password / mPin Policy"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "mPin",
+          "synonyms": [
+            "mPIN"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "appPassword",
+          "synonyms": [
+            "Application Password"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "otp",
+          "synonyms": [
+            "One Time Password"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "silentSms",
+          "synonyms": [
+            "Silent SMS"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "secAspect",
+          "synonyms": [
+            "Security Aspects"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "mBankSecurity",
+          "synonyms": [
+            "Security"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "mBankActivate",
+          "synonyms": [
+            "Activation Process"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "mBankMultiAccReg",
+          "synonyms": [
+            "Registration for Multiple Accounts"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "mBankRegChannel",
+          "synonyms": [
+            "Registration Channel"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "mBankPrereq",
+          "synonyms": [
+            "Activation Prerequisites"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "mBankCMode",
+          "synonyms": [
+            "Communication Mode"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "mBankAvail",
+          "synonyms": [
+            "Platform Supported"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "mBankRegAct",
+          "synonyms": [
+            "Registration / Activation"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "language": "en",
+  "metadata": {
+    "api_version": {
+      "major_version": "v1",
+      "minor_version": "2018-09-20"
+    }
+  },
+  "skill_id": "a11e87ca-866f-4b6a-8a81-314e9d28cf1b",
+  "webhooks": [
+    {
+      "url": "<Webhook URL",
+      "name": "<webhook Name",
+      "headers": []
+    }
+  ],
+  "dialog_nodes": [
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hi, I am ADI. I am here to assist you."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "Welcome",
+      "context": {
+        "isNode": false,
+        "currentPath": []
+      },
+      "conditions": "true",
+      "dialog_node": "response_7_1575663404162",
+      "previous_sibling": "slot_4_1575696806114"
+    },
+    {
+      "type": "slot",
+      "parent": "Welcome",
+      "dialog_node": "slot_4_1575696806114"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_9_1576150079233",
+      "event_name": "focus",
+      "dialog_node": "handler_5_1576150079321",
+      "previous_sibling": "handler_6_1576150079321"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_9_1576150079233",
+      "event_name": "input",
+      "dialog_node": "handler_6_1576150079321"
+    },
+    {
+      "type": "frame",
+      "title": "isNode : false",
+      "parent": "node_6_1575716451002",
+      "metadata": {
+        "callout": {
+          "name": "main_webhook",
+          "type": "webhook",
+          "parameters": {
+            "key": {
+              "data": {
+                "doc": "DIGITAL",
+                "currentPath": "$currentPath"
+              },
+              "method": "get_filter_by_path",
+              "schema": false,
+              "database": "Products",
+              "collection": "FILTERS"
+            }
+          },
+          "result_variable": "webhook_menu_child"
+        },
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_6_1575716451002"
+      },
+      "conditions": "!$isNode",
+      "dialog_node": "node_4_1574852007822",
+      "previous_sibling": "slot_9_1576150079233"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": []
+      },
+      "parent": "node_6_1575716451002",
+      "context": {
+        "Menus": null
+      },
+      "conditions": "true",
+      "dialog_node": "response_1_1575891280459",
+      "previous_sibling": "node_4_1574852007822"
+    },
+    {
+      "type": "slot",
+      "parent": "node_6_1575716451002",
+      "dialog_node": "slot_9_1576150079233"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_4_1575696806114",
+      "event_name": "focus",
+      "dialog_node": "handler_8_1575696806157",
+      "previous_sibling": "handler_1_1575696806157"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_4_1575696806114",
+      "context": {},
+      "event_name": "input",
+      "dialog_node": "handler_1_1575696806157"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_4_1574852007822",
+      "variable": "$Menus",
+      "dialog_node": "slot_2_1575630050066",
+      "previous_sibling": "handler_1_1575630049269"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": []
+      },
+      "parent": "node_4_1574852007822",
+      "context": {
+        "isNode": "<?($webhook_menu_parent.data[0].menus.filter('temp', 'temp.type==$Menus').![isNode]).get(0)?>",
+        "currentPath": "<?$currentPath.append($Menus)?>",
+        "webhook_menu_parent": null
+      },
+      "conditions": "true",
+      "dialog_node": "response_8_1575716699447",
+      "previous_sibling": "slot_2_1575630050066"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "generic": []
+      },
+      "parent": "node_4_1574852007822",
+      "event_name": "focus",
+      "dialog_node": "handler_1_1575630049269"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            " {\"desc\":\"Pleae select appropriate option from below:\",\"type\":\"Button\",\"feedback\":\"false\",\"currentbot\":\"Product_Enquiry\",\"data\":<?$webhook_menu_parent.data[0]?>}"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_2_1575630050066",
+      "context": {},
+      "event_name": "focus",
+      "dialog_node": "handler_4_1575630050108",
+      "previous_sibling": "handler_7_1575630050108"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_2_1575630050066",
+      "context": {
+        "Menus": "@Menus"
+      },
+      "conditions": "@Menus",
+      "event_name": "input",
+      "dialog_node": "handler_7_1575630050108"
+    },
+    {
+      "type": "standard",
+      "title": "General 1",
+      "actions": [
+        {
+          "name": "main_webhook",
+          "type": "webhook",
+          "parameters": {
+            "key": {
+              "data": {
+                "doc": "DIGITAL",
+                "currentPath": "$currentPath"
+              },
+              "method": "get_filter_by_path",
+              "schema": false,
+              "database": "Products",
+              "collection": "FILTERS"
+            }
+          },
+          "result_variable": "webhook_menu_parent"
+        }
+      ],
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "#menu || !$isNode",
+      "dialog_node": "node_6_1575716451002",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "title": "General 2",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "We have reached to  final Node"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {
+        "_customization": {
+          "mcr": false
+        }
+      },
+      "conditions": "$isNode",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_6_1575867804933",
+      "previous_sibling": "node_6_1575716451002"
+    },
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_6_1575867804933"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "metadata": {
+        "callout": {
+          "name": "main_webhook",
+          "type": "webhook",
+          "parameters": {
+            "key": ""
+          },
+          "result_variable": "webhook_result_1"
+        },
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "workspace_id": "a11e87ca-866f-4b6a-8a81-314e9d28cf1b",
+  "counterexamples": [],
+  "system_settings": {
+    "tooling": {
+      "store_generic_responses": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "status": "Available"
+}
